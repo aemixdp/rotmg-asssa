@@ -31,7 +31,7 @@ def ask(tag, message): io(tag, message, input)
 
 def find_rotmg(hwnd, _):
   global rotmg_hwnd
-  if "realm of the mad god" in win32gui.GetWindowText(hwnd).lower():
+  if win32gui.GetWindowText(hwnd).lower() == "realm of the mad god":
     rotmg_hwnd = hwnd
 
 def get_pixel_rgb(hdc, x, y):
