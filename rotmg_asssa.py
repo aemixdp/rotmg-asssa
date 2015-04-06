@@ -24,7 +24,7 @@ rotmg_hwnd = None
 
 def io(tag, message, func):
   timestr = time.strftime("%H:%M:%S", time.localtime())
-  print("(%s) [%s] %s" % (timestr, tag, message))
+  func("(%s) [%s] %s" % (timestr, tag, message))
 
 def say(tag, message): io(tag, message, print)
 def ask(tag, message): io(tag, message, input)
