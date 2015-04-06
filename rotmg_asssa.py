@@ -64,7 +64,7 @@ while True:
     rotmg_hwnd = None
     say("sys/event", "Lost game window! ")
     bind_to_game_window()
-  if low_hp():
+  if rotmg_hwnd == win32gui.GetForegroundWindow() and low_hp():
     if PRIEST_MODE:
       enough_mp = True
       say("game/event", "Low HP! Trying to cast heal...")
