@@ -29,7 +29,7 @@ def io(tag, message, func):
 def say(tag, message): io(tag, message, print)
 def ask(tag, message): io(tag, message, input)
 
-def find_rotmg(hwnd, _):
+def bind_if_rotmg(hwnd, _):
   global rotmg_hwnd
   if win32gui.GetWindowText(hwnd).lower() == "realm of the mad god":
     rotmg_hwnd = hwnd
@@ -47,17 +47,23 @@ def is_empty_pixel(offset_ratio_x, offset_ratio_y):
 def low_hp(): return is_empty_pixel(HP_OFFSET_RATIO_X, HP_OFFSET_RATIO_Y)
 def low_mp(): return is_empty_pixel(MP_OFFSET_RATIO_X, MP_OFFSET_RATIO_Y)
 
-say("init/info", "Seeking for game window...")
+def bind_to_game_window():
+  say("sys/info", "Seeking for game window...")
+  while True:
+    win32gui.EnumWindows(bind_if_rotmg, None)
+    if rotmg_hwnd is None:
+      ask("sys/failure", "Game window not found! Please launch the game and press enter...")
+    else:
+      say("sys/success", "Game window found: %s" % rotmg_hwnd)
+      break
+
+bind_to_game_window()
 
 while True:
-  win32gui.EnumWindows(find_rotmg, None)
-  if rotmg_hwnd is None:
-    ask("init/failure", "Game window not found! Please launch the game and press enter...")
-  else:
-    say("init/success", "Game window found: %s" % rotmg_hwnd)
-    break
-
-while True:
+  if not win32gui.IsWindow(rotmg_hwnd):
+    rotmg_hwnd = None
+    say("sys/event", "Lost game window! ")
+    bind_to_game_window()
   if low_hp():
     if PRIEST_MODE:
       enough_mp = True
