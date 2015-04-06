@@ -10,7 +10,7 @@ Regular mode: If target pixel on HP bar corresponds to low HP, try to drink HP p
 If after this HP is still low, it means there are no HP potions, so it's time to teleport to Nexus.
 
 Priest mode: If target pixel on HP bar corresponds to low HP, check the MP. If MP is low too, try to drink MP potion.
-If there are no MP potions, try to drink HP potion. If there are no HP potions, teleport to Nexus.
+If succeed, cast heal spell. Otherwise, try to drink HP potion. If there are no HP potions, teleport to Nexus.
 
 ## Usage
 To run this script you should install [python](https://www.python.org/downloads/release/python-343/)
