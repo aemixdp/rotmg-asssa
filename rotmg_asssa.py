@@ -1,7 +1,7 @@
 import time, win32gui
 import win32com.client as comclt
 
-PRIEST_MODE = True
+HEALER_MODE = False
 
 HP_OFFSET_RATIO_X = 0.85375
 HP_OFFSET_RATIO_Y = 0.44
@@ -65,7 +65,7 @@ while True:
     say("sys/event", "Lost game window! ")
     bind_to_game_window()
   if rotmg_hwnd == win32gui.GetForegroundWindow() and low_hp():
-    if PRIEST_MODE:
+    if HEALER_MODE:
       enough_mp = True
       say("game/event", "Low HP! Trying to cast heal...")
       if low_mp():

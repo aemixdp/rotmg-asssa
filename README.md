@@ -4,12 +4,12 @@ Of course this is just for demonstration purpose *bla-bla-bla* don't use it or y
 Well, I actually think it's more fun to do this by hand, but now I'm extra hungry for fame, pots, and achievements.
 
 ## How it works
-Basically this script just examines pixel colors on HP and MP (in priest mode) bars and sends keyboard presses to game window.
+Basically this script just examines pixel colors on HP and MP (in healer mode) bars and sends keyboard presses to game window.
 
 Regular mode: If target pixel on HP bar corresponds to low HP, try to drink HP potion (by sending keypress).
 If after this HP is still low, it means there are no HP potions, so it's time to teleport to Nexus.
 
-Priest mode: If target pixel on HP bar corresponds to low HP, check the MP. If MP is low too, try to drink MP potion.
+Healer mode: If target pixel on HP bar corresponds to low HP, check the MP. If MP is low too, try to drink MP potion.
 If succeed, cast heal spell. Otherwise, try to drink HP potion. If there are no HP potions, teleport to Nexus.
 
 ## Usage
